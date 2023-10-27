@@ -17,27 +17,75 @@ const estadosCidades =require('./modulo/estados_cidades')
 
 // }
 
-    const getDadosEstado = function(){
+    // const getDadosEstado = function(){
         
-        let DadosJson = {}
-        let FiltrarEstados = 'SP'
-        let cont = 0;
-        while  (cont < true ){
+    //     let DadosJson = {}
+    //     let FiltrarEstados = 'SP'
+    //     let cont = 0;
+    //     while  (true){
 
-            if(FiltrarEstados)
+    //         if(FiltrarEstados==estadosCidades.estadosCidades.estados[cont].sigla){
+    //             DadosJson.uf=estadosCidades.estadosCidades.estados[cont].sigla
+    //             DadosJson.descricao=estadosCidades.estadosCidades.estados[cont].nome
+    //             DadosJson.capital=estadosCidades.estadosCidades.estados[cont].capital
+    //             DadosJson.regiao=estadosCidades.estadosCidades.estados[cont].regiao
+    //             break
+    //         }
 
-        ArraySigla.push(estadosCidades.estadosCidades.sigla, nome, capital, regiao[cont])
-        cont++
+        
+    //     cont++
     
-        }
+    //     }
 
-        JsonSigla.uf = ArraySigla
-        
-        return JsonSigla
+       
+    //     return DadosJson
+
+    // }
+
+    // const getCapitalEstado = (sigla = 'AC') => {
+
+    //     let JsonDados = {}
+    //     let estadoscidades = estadosCidades.estadosCidades.estados;
+
+    //     estadoscidades.forEach(function (estados) {
+
+    //         if(estados.sigla.includes(sigla)){
+    //             JsonDados.sigla = estados.sigla
+    //             JsonDados.descricao = estados.nome
+    //             JsonDados.capital = estados.capital
+    //         }
+            
+    //     });
+
+    //     return JsonDados
+
+    // }
+
+    const getCapitalEstado = (regiao = 'SUL') => {
+
+        let JsonDados = {}
+        let estadoscidades = estadosCidades.estadosCidades.estados;
+
+        estadoscidades.forEach(function (estados) {
+
+            if(estados.regiao.includes(regiao)){
+                JsonDados.regiao = estados.regiao
+                JsonDados.descricao = estados.nome
+                JsonDados.capital = estados.capital
+            }
+            
+        });
+
+        return JsonDados
 
     }
 
-    console.log(getDadosEstado())
+    console.log(getCapitalEstado())
+
+
+    // console.log(getCapitalEstado())
+
+    // console.log(getDadosEstado())
 
 
 // console.log(getListaDeEstados())
