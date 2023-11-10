@@ -15,7 +15,7 @@ const getListaDeEstados = function(){
     return JsonSigla
 
 
-}
+    };
 
     const getDadosEstado = function(){
         
@@ -40,7 +40,7 @@ const getListaDeEstados = function(){
        
         return DadosJson
 
-    }
+    };
 
     const getCapitalEstado = (sigla = 'AC') => {
 
@@ -60,7 +60,7 @@ const getListaDeEstados = function(){
         
         return JsonDados
 
-    }
+    };
 
     const getEstadosRegiao = (regiao) =>{
 
@@ -82,16 +82,19 @@ const getListaDeEstados = function(){
         })
     
         return ARRAYestados
-    }
+    };
     // console.log(getEstadosRegiao('Sudeste'))
-
-
 
     // console.log(getCapitalEstado())
 
     // console.log(getDadosEstado())
 
-
-// console.log(getListaDeEstados())
+    // console.log(getListaDeEstados())
+    module.exports = {
+        getListaDeEstados,
+        getDadosEstado,
+        getCapitalEstado,
+        getEstadosRegiao
+    }
 
 
