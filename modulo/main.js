@@ -20,8 +20,9 @@ const getListaDeEstados = function(){
     const getDadosEstado = function(){
         
         let DadosJson = {}
-        let FiltrarEstados = 'SP'
+        let FiltrarEstados = 'RJ'
         let cont = 0;
+        let status = false;
         while  (true){
 
             if(FiltrarEstados==estadosCidades.estadosCidades.estados[cont].sigla){
@@ -29,6 +30,7 @@ const getListaDeEstados = function(){
                 DadosJson.descricao=estadosCidades.estadosCidades.estados[cont].nome
                 DadosJson.capital=estadosCidades.estadosCidades.estados[cont].capital
                 DadosJson.regiao=estadosCidades.estadosCidades.estados[cont].regiao
+                status = true
                 break
             }
 
@@ -36,14 +38,16 @@ const getListaDeEstados = function(){
         cont++
     
         }
-
-       
-        return DadosJson
+        if(status)
+            return DadosJson
+        else
+            return false;
 
     };
 
-    const getCapitalEstado = (sigla = 'AC') => {
+    const getCapitalEstado = (sigla = 'SP') => {
 
+        let status = false;
         let JsonDados = {}
         let estadoscidades = estadosCidades.estadosCidades.estados;
 
@@ -53,36 +57,52 @@ const getListaDeEstados = function(){
                 JsonDados.sigla = estados.sigla
                 JsonDados.descricao = estados.nome
                 JsonDados.capital = estados.capital
+                status = true;
             }
             
         });
 
-        
+        if(status)
         return JsonDados
+    else
+        return false;
+   
 
     };
 
-    const getEstadosRegiao = (regiao) =>{
+    const getEstadosRegiao = function(){
 
-        let estadosCidades = estadosCidades.estadosCidades.estados
-    
-        let ARRAYestados = []
-    
-        estadosCidades.forEach( function(estados){
-    
-            if(estados.regiao.includes(regiao))
-            {
-                let JSONregiao = {}
-                JSONregiao.uf = estados.sigla
-                JSONregiao.descricao = estados.nome
-    
-                ARRAYestados.push(JSONregiao)   
+        let status = false;
+        let RegiaoARRAY=[]
+        let filtrarRegiao='SUL'
+        let counter=0
+        while(counter < 27){
+            
+            if(filtrarRegiao.toUpperCase()==estadosCidades.estadosCidades.estados[counter].regiao.toUpperCase()){
+            RegiaoJSON={}
+            RegiaoJSON.uf=estadosCidades.estadosCidades.estados[counter].sigla
+            RegiaoJSON.nome=estadosCidades.estadosCidades.estados[counter].nome
+            RegiaoARRAY.push(RegiaoJSON)
+            status = true
             }
+           counter++
+         }
+        
+         if(status)
+         return RegiaoARRAY
+     else
+         return false;
+    }
     
-        })
+    //     if(status)
+    //     return ARRAYestados
+    // else
+    //     return false;
+   
+        
+
     
-        return ARRAYestados
-    };
+
     // console.log(getEstadosRegiao('Sudeste'))
 
     // console.log(getCapitalEstado())
